@@ -6,7 +6,7 @@ const body = document.querySelector("body");
 const section = document.createElement("section");
 const mainDiv = document.createElement("div");
 const table = document.createElement("table");
-//const tblHeader = document.createElement("thead");
+const tblHeader = document.createElement("thead");
 const tblBody = document.createElement("tbody");
  
 section.classList.add("container");
@@ -36,9 +36,7 @@ function addPerson() {
   const name = names[Math.floor(Math.random() * names.length)];
   const occupation = occupations[Math.floor(Math.random() * occupations.length)];
   const price = prices[Math.floor(Math.random() * prices.length)];
-
   people.push({ name, occupation, price });
-
 }
 
 function averagePrice() {
@@ -47,7 +45,6 @@ function averagePrice() {
 }
 
 function buildTitles(price) {
-  
   mainDiv.setAttribute('class',"content");
   //Title
   const title = document.createElement("h2");
@@ -65,16 +62,25 @@ function buildTitles(price) {
   mainDiv.append(title);
   mainDiv.append(avgPriceText);
   mainDiv.append(tblTitle);
-
   section.append(mainDiv);
 }
 
-
 function buildTable() {
+    
+  //Build thead
+  const headers = ["Name", "Occupation", "Starting Price"]
+  const row = document.createElement("tr");
+  for (const name of headers) {
+    const cell = document.createElement("th");
+    const cellText = document.createTextNode(name);
+    cell.append(cellText);
+    row.append(cell);
+  }
+  tblBody.append(row);
   
-  //building rows
+  //build rows
   for (let i = 0; i < people.length; i++) {
-   console.log(people[i]);
+    console.log(people[i]);
     const row = document.createElement("tr");
     Object.entries(people[i]).forEach((k, v) => {
       let element = (k.toString().split(","))[1];
@@ -89,6 +95,7 @@ function buildTable() {
   mainDiv.append(table);
   section.append(mainDiv);
 }
+
 function updateAveragePrice() { 
   const element = document.getElementById("avgPrice");
   //const price = averagePrice();
@@ -122,7 +129,7 @@ let intervalId = setInterval(() => {
   addRow();
   updateAveragePrice();
 
-  if (people.length >= freelancers.length) { 
+  if (people.length >= freelancers.length * 1.5) { 
     clearInterval(intervalId);
   }
   
