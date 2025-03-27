@@ -1,4 +1,5 @@
-const freelancers = [
+
+ const freelancers = [
   { name: "Bryan", price: 25, occupation: "gardener" },
   { name: "Ryan", price: 51, occupation: "programmer" },
   { name: "James", price: 43, occupation: "teacher" },
@@ -9,5 +10,5 @@ const freelancers = [
   { name: "Kirsten", price: 72, occupation: "driver" },
 ];
 
-
 export { freelancers };
+export default freelancers;
