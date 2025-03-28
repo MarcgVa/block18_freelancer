@@ -64,7 +64,7 @@ function buildTitles(price) {
   mainDiv.append(tblTitle);
   section.append(mainDiv);
 }
-
+// === functions ===
 function buildTable() {
     
   //Build thead
@@ -77,7 +77,7 @@ function buildTable() {
     row.append(cell);
   }
   tblBody.append(row);
-  
+
   //build rows
   for (let i = 0; i < people.length; i++) {
     console.log(people[i]);
@@ -121,6 +121,8 @@ function main() {
   buildTable();
   body.append(section);
 }
+
+// === main ===
 
 main();
 
